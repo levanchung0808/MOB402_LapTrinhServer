@@ -30,7 +30,10 @@ router.post("/dang-nhap", async function (req, res, next) {
 // * 2. đăng xuất
 // * http://localhost:3000/dang-xuat
 // * get: chạy đăng xuất
-
+router.get("/dang-xuat", function (req, res, next) {
+  
+  res.redirect("/dang-nhap");
+});
 
 
 module.exports = router;

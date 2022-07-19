@@ -5,7 +5,7 @@ const get = async (page, size) => {
 };
 
 const getById = async (id) => {
-  const product = products.find((product) => product._id === id);
+  const product = products.find((product) => product._id == id);
   return product;
 };
 
