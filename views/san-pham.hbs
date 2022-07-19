@@ -1,0 +1,507 @@
+<div class="page-wrapper">
+    <!-- HEADER MOBILE-->
+    <header class="header-mobile d-block d-lg-none">
+        <div class="header-mobile__bar">
+            <div class="container-fluid">
+                <div class="header-mobile-inner">
+                    <a class="logo" href="/">
+                        <img src="/images/logo.png" alt="CoolAdmin" />
+                    </a>
+                    <button class="hamburger hamburger--slider" type="button">
+                        <span class="hamburger-box">
+                            <span class="hamburger-inner"></span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar-mobile">
+            <div class="container-fluid">
+                <ul class="navbar-mobile__list list-unstyled">
+                    <li class="has-sub">
+                        <a class="js-arrow" href="index.hbs">
+                            <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="chart.html">
+                            <i class="fas fa-chart-bar"></i>Charts</a>
+                    </li>
+                    <li>
+                        <a href="table.html">
+                            <i class="fas fa-table"></i>Tables</a>
+                    </li>
+                    <li>
+                        <a href="form.html">
+                            <i class="far fa-check-square"></i>Forms</a>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- END HEADER MOBILE-->
+
+    <!-- MENU SIDEBAR-->
+    <aside class="menu-sidebar d-none d-lg-block">
+        <div class="logo">
+            <a href="#">
+                <img src="/images/logo.png" alt="Cool Admin" />
+            </a>
+        </div>
+        <div class="menu-sidebar__content js-scrollbar1">
+            <nav class="navbar-sidebar">
+                <ul class="list-unstyled navbar__list">
+                    <li class="has-sub">
+                        <a class="js-arrow" href="index.html">
+                            <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="chart.html">
+                            <i class="fas fa-chart-bar"></i>Charts</a>
+                    </li>
+                    <li class="active">
+                        <a href="table.html">
+                            <i class="fas fa-table"></i>Tables</a>
+                    </li>
+                    <li>
+                        <a href="form.html">
+                            <i class="far fa-check-square"></i>Forms</a>
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+    </aside>
+    <!-- END MENU SIDEBAR-->
+
+    <!-- PAGE CONTAINER-->
+    <div class="page-container">
+        <!-- HEADER DESKTOP-->
+        <header class="header-desktop">
+            <div class="section__content section__content--p30">
+                <div class="container-fluid">
+                    <div class="header-wrap">
+                        <form class="form-header" action="" method="POST">
+                            <input class="au-input au-input--xl" type="text" name="search"
+                                placeholder="Search for datas &amp; reports..." />
+                            <button class="au-btn--submit" type="submit">
+                                <i class="zmdi zmdi-search"></i>
+                            </button>
+                        </form>
+                        <div class="header-button">
+                            <div class="account-wrap">
+                                <div class="account-item clearfix js-item-menu">
+                                    <div class="image">
+                                        <img src="/images/avatar-01.jpg" alt="John Doe" />
+                                    </div>
+                                    <div class="content">
+                                        <a class="js-acc-btn" href="#">john doe</a>
+                                    </div>
+                                    <div class="account-dropdown js-dropdown">
+                                        <div class="info clearfix">
+                                            <div class="image">
+                                                <a href="#">
+                                                    <img src="/images/avatar-01.jpg" alt="John Doe" />
+                                                </a>
+                                            </div>
+                                            <div class="content">
+                                                <h5 class="name">
+                                                    <a href="#">john doe</a>
+                                                </h5>
+                                                <span class="email">johndoe@example.com</span>
+                                            </div>
+                                        </div>
+                                        <div class="account-dropdown__body">
+                                            <div class="account-dropdown__item">
+                                                <a href="#">
+                                                    <i class="zmdi zmdi-account"></i>Account</a>
+                                            </div>
+                                            <div class="account-dropdown__item">
+                                                <a href="#">
+                                                    <i class="zmdi zmdi-settings"></i>Setting</a>
+                                            </div>
+                                            <div class="account-dropdown__item">
+                                                <a href="#">
+                                                    <i class="zmdi zmdi-money-box"></i>Billing</a>
+                                            </div>
+                                        </div>
+                                        <div class="account-dropdown__footer">
+                                            <a href="#">
+                                                <i class="zmdi zmdi-power"></i>Logout</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- END HEADER DESKTOP-->
+
+        <!-- MAIN CONTENT-->
+        <div class="main-content">
+            <div class="section__content section__content--p30">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="table-responsive table--no-card m-b-30">
+                                <div class="table-responsive table-responsive-data2">
+                                    <table id="exportTable" class="table table-data2">
+                                        <thead>
+                                            <tr>
+                                                <th>name</th>
+                                                <th></th>
+                                                <th style="
+                                                    padding: 15px;
+                                                ">quantity</th>
+                                                <th>price</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {{#each products}}
+                                            <tr class="tr-shadow">
+                                                <td style="margin: 0; padding: 25px 0px 25px 25px;">
+                                                    <img style="width: 62px;
+                                                height: 62px;
+                                                margin: 5px;
+                                                border: 1px solid #3A3A3A;
+                                                background-color: #333333;
+                                                border-color: #D2D2D2;" src="{{this.image}}" alt="">
+                                                </td>
+                                                <td style="margin: 0; padding: 0;">
+                                                    <p style="font-weight: bold;color: #4272d7;">{{this._id}}</p>
+                                                    <span class="block-email">{{this.name}}</span>
+                                                </td>
+                                                <td>1</td>
+                                                <td style="font-weight: bold;color: red;">{{this.price}}</td>
+                                                <td>
+                                                    <div class="table-data-feature">
+                                                        <button type="button" class="item" data-toggle="modal"
+                                                            data-target="#largeModal" title="Edit">
+                                                            <i class="zmdi zmdi-edit"></i>
+                                                        </button>
+                                                        <button type="button" class="item" data-toggle="modal"
+                                                            data-placement="top" data-target="#staticModal"
+                                                            title="Delete">
+                                                            <i class="zmdi zmdi-delete"></i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            {{/each}}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <!-- USER DATA-->
+                            <div class="user-data m-b-30">
+                                <h3 class="title-3 m-b-30">
+                                    <i class="zmdi zmdi-account-calendar"></i>user data
+                                </h3>
+                                <div class="filters m-b-45">
+                                    <div class="rs-select2--dark rs-select2--md m-r-10 rs-select2--border">
+                                        <select class="js-select2" name="property">
+                                            <option selected="selected">All Properties</option>
+                                            <option value="">Products</option>
+                                            <option value="">Services</option>
+                                        </select>
+                                        <div class="dropDownSelect2"></div>
+                                    </div>
+                                    <div class="rs-select2--dark rs-select2--sm rs-select2--border">
+                                        <select class="js-select2 au-select-dark" name="time">
+                                            <option selected="selected">All Time</option>
+                                            <option value="">By Month</option>
+                                            <option value="">By Day</option>
+                                        </select>
+                                        <div class="dropDownSelect2"></div>
+                                    </div>
+                                </div>
+                                <div class="table-responsive table-data">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <td>name</td>
+                                                <td>role</td>
+                                                <td>type</td>
+                                                <td></td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div class="table-data__info">
+                                                        <h6>lori lynch</h6>
+                                                        <span>
+                                                            <a href="#">johndoe@gmail.com</a>
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="role admin">admin</span>
+                                                </td>
+                                                <td>
+                                                    <div class="rs-select2--trans rs-select2--sm">
+                                                        <select class="js-select2" name="property">
+                                                            <option selected="selected">Full Control</option>
+                                                            <option value="">Post</option>
+                                                            <option value="">Watch</option>
+                                                        </select>
+                                                        <div class="dropDownSelect2"></div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="more">
+                                                        <i class="zmdi zmdi-more"></i>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="table-data__info">
+                                                        <h6>lori lynch</h6>
+                                                        <span>
+                                                            <a href="#">johndoe@gmail.com</a>
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="role user">user</span>
+                                                </td>
+                                                <td>
+                                                    <div class="rs-select2--trans rs-select2--sm">
+                                                        <select class="js-select2" name="property">
+                                                            <option value="">Full Control</option>
+                                                            <option value="" selected="selected">Post</option>
+                                                            <option value="">Watch</option>
+                                                        </select>
+                                                        <div class="dropDownSelect2"></div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="more">
+                                                        <i class="zmdi zmdi-more"></i>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="table-data__info">
+                                                        <h6>lori lynch</h6>
+                                                        <span>
+                                                            <a href="#">johndoe@gmail.com</a>
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="role user">user</span>
+                                                </td>
+                                                <td>
+                                                    <div class="rs-select2--trans rs-select2--sm">
+                                                        <select class="js-select2" name="property">
+                                                            <option value="">Full Control</option>
+                                                            <option value="" selected="selected">Post</option>
+                                                            <option value="">Watch</option>
+                                                        </select>
+                                                        <div class="dropDownSelect2"></div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="more">
+                                                        <i class="zmdi zmdi-more"></i>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="table-data__info">
+                                                        <h6>lori lynch</h6>
+                                                        <span>
+                                                            <a href="#">johndoe@gmail.com</a>
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="role member">member</span>
+                                                </td>
+                                                <td>
+                                                    <div class="rs-select2--trans rs-select2--sm">
+                                                        <select class="js-select2" name="property">
+                                                            <option selected="selected">Full Control</option>
+                                                            <option value="">Post</option>
+                                                            <option value="">Watch</option>
+                                                        </select>
+                                                        <div class="dropDownSelect2"></div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="more">
+                                                        <i class="zmdi zmdi-more"></i>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="user-data__footer">
+                                    <button class="au-btn au-btn-load">load more</button>
+                                </div>
+                            </div>
+                            <!-- END USER DATA-->
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="copyright">
+                                <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a
+                                        href="https://colorlib.com">Colorlib</a>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- modal large ADD-->
+<div class="modal fade" id="largeModalAdd" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="border-bottom: 0;">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!-- Product section-->
+            <section class="py-5">
+
+                <div class="container px-4 px-lg-5 my-5">
+                    <div class="row gx-4 gx-lg-5 align-items-center">
+                        <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0"
+                                src="https://icon-library.com/images/add-image-icon-png/add-image-icon-png-14.jpg"
+                                alt="..." /></div>
+                        <div class="col-md-6">
+                            <form action="#" method="post" enctype="multipart/form-data" class="form-horizontal">
+
+                                <div class="row form-group">
+                                    <div class="col-12 col-md-12">
+                                        <input type="text" id="text-input" name="text-input" placeholder="Name item"
+                                            class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-12 col-md-12">
+                                        <select name="select" id="select" class="form-control">
+                                            <option value="0">Select Game</option>
+                                            <option value="1">Option #1</option>
+                                            <option value="2">Option #2</option>
+                                            <option value="3">Option #3</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-12 col-md-12">
+                                        <input type="number" value="1" min="1" max="1000" step="1" />
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-12 col-md-12">
+                                        <textarea name="textarea-input" id="textarea-input" rows="9"
+                                            placeholder="Content..." class="form-control"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+                                    <div class="col-12 col-md-12">
+                                        <input type="file" id="file-input" name="file-input" class="form-control-file">
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <button class="au-btn au-btn--block au-btn--green m-b-20" style="margin-top: 20px;"
+                                        type="submit">Save </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+<!-- end modal large ADD -->
+
+<!-- modal large EDIT-->
+<div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="border-bottom: 0;">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!-- Product section-->
+            <section class="py-5">
+
+                <div class="container px-4 px-lg-5 my-5">
+                    <div class="row gx-4 gx-lg-5 align-items-center">
+                        <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0"
+                                src="https://community.cloudflare.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXU5A1PIYQNqhpOSV-fRPasw8rsUFJ5KBFZv668FFQxnaecIT8Wv9rilYTYkfTyNuiFwmhUvpZz3-2Z9oqg0Vew80NvZzuiJdeLMlhpwFO-XdA/360fx360f"
+                                alt="..." /></div>
+                        <div class="col-md-6">
+                            <div class="small mb-1">SKU: BST-498</div>
+                            <h1 class="display-5 fw-bolder">Recoil Case</h1>
+                            <div class="fs-5 mb-5">
+                                <span class="text-decoration-line-through"
+                                    style="font-weight: bold;color: red;">$679.00</span>
+                            </div>
+                            <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium at
+                                dolorem quidem modi. Nam sequi consequatur obcaecati excepturi alias magni,
+                                accusamus eius blanditiis delectus ipsam minima ea iste laborum vero?</p>
+                            <div class="d-flex">
+                                <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1"
+                                    style="max-width: 3rem" />
+                            </div>
+                            <button class="au-btn au-btn--block au-btn--green m-b-20" style="margin-top: 20px;"
+                                type="submit">Save </button>
+                            <div class="fs-5 mb-5"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+<!-- end modal large EDIT-->
+
+<!-- modal static -->
+<div class="modal fade" id="staticModal" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel"
+    aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticModalLabel">Static Modal</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    This is a static modal, backdrop click will not close it.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end modal static -->

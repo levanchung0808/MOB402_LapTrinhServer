@@ -1,0 +1,665 @@
+<div class="page-wrapper">
+    <!-- HEADER MOBILE-->
+    <header class="header-mobile d-block d-lg-none">
+        <div class="header-mobile__bar">
+            <div class="container-fluid">
+                <div class="header-mobile-inner">
+                    <a class="logo" href="index.html">
+                        <img src="/images/logo.png" alt="CoolAdmin" />
+                    </a>
+                    <button class="hamburger hamburger--slider" type="button">
+                        <span class="hamburger-box">
+                            <span class="hamburger-inner"></span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar-mobile">
+            <div class="container-fluid">
+                <ul class="navbar-mobile__list list-unstyled">
+                    <li class="has-sub">
+                        <a class="js-arrow" href="#">
+                            <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="san-pham.hbs">
+                            <i class="fas fa-chart-bar"></i>Charts</a>
+                    </li>
+                    <li>
+                        <a href="table.html">
+                            <i class="fas fa-table"></i>Tables</a>
+                    </li>
+                    <li>
+                        <a href="form.html">
+                            <i class="far fa-check-square"></i>Forms</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- END HEADER MOBILE-->
+
+    <!-- MENU SIDEBAR-->
+    <aside class="menu-sidebar d-none d-lg-block">
+        <div class="logo">
+            <a href="#">
+                <img src="images/logo.png" alt="Cool Admin" />
+            </a>
+        </div>
+        <div class="menu-sidebar__content js-scrollbar1">
+            <nav class="navbar-sidebar">
+                <ul class="list-unstyled navbar__list">
+                    <li class="active has-sub">
+                        <a class="js-arrow" href="#">
+                            <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="san-pham.hbs">
+                            <i class="fas fa-chart-bar"></i>Charts</a>
+                    </li>
+                    <li>
+                        <a href="table.html">
+                            <i class="fas fa-table"></i>Tables</a>
+                    </li>
+                    <li>
+                        <a href="form.html">
+                            <i class="far fa-check-square"></i>Forms</a>
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+    </aside>
+    <!-- END MENU SIDEBAR-->
+
+    <!-- PAGE CONTAINER-->
+    <div class="page-container">
+        <!-- HEADER DESKTOP-->
+        <!-- HEADER DESKTOP-->
+        <header class="header-desktop">
+            <div class="section__content section__content--p30">
+                <div class="container-fluid">
+                    <div class="header-wrap">
+                        <form class="form-header" action="" method="POST">
+                            <input class="au-input au-input--xl" type="text" name="search"
+                                placeholder="Search for datas &amp; reports..." />
+                            <button class="au-btn--submit" type="submit">
+                                <i class="zmdi zmdi-search"></i>
+                            </button>
+                        </form>
+                        <div class="header-button">
+                            <div class="account-wrap">
+                                <div class="account-item clearfix js-item-menu">
+                                    <div class="image">
+                                        <img src="/images/avatar-01.jpg" alt="John Doe" />
+                                    </div>
+                                    <div class="content">
+                                        <a class="js-acc-btn" href="#">john doe</a>
+                                    </div>
+                                    <div class="account-dropdown js-dropdown">
+                                        <div class="info clearfix">
+                                            <div class="image">
+                                                <a href="#">
+                                                    <img src="/images/avatar-01.jpg" alt="John Doe" />
+                                                </a>
+                                            </div>
+                                            <div class="content">
+                                                <h5 class="name">
+                                                    <a href="#">john doe</a>
+                                                </h5>
+                                                <span class="email">johndoe@example.com</span>
+                                            </div>
+                                        </div>
+                                        <div class="account-dropdown__body">
+                                            <div class="account-dropdown__item">
+                                                <a href="#">
+                                                    <i class="zmdi zmdi-account"></i>Account</a>
+                                            </div>
+                                            <div class="account-dropdown__item">
+                                                <a href="#">
+                                                    <i class="zmdi zmdi-settings"></i>Setting</a>
+                                            </div>
+                                            <div class="account-dropdown__item">
+                                                <a href="#">
+                                                    <i class="zmdi zmdi-money-box"></i>Billing</a>
+                                            </div>
+                                        </div>
+                                        <div class="account-dropdown__footer">
+                                            <a href="#">
+                                                <i class="zmdi zmdi-power"></i>Logout</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- END HEADER DESKTOP-->
+        <!-- HEADER DESKTOP-->
+
+        <!-- MAIN CONTENT-->
+        <div class="main-content">
+            <div class="col-md-4 text-right"> <button id="exportButton" class="btn btn-primary">Export</button> </div>
+
+            <div class="section__content section__content--p30">
+                <!-- STATISTIC CHART-->
+                <section class="statistic-chart">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3 class="title-5 m-b-35">statistics</h3>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-lg-4">
+                                <!-- CHART-->
+                                <div class="statistic-chart-1">
+                                    <h3 class="title-3 m-b-30">chart</h3>
+                                    <div class="chart-wrap">
+                                        <canvas id="widgetChart5"></canvas>
+                                    </div>
+                                    <div class="statistic-chart-1-note">
+                                        <span class="big">10,368</span>
+                                        <span>/ 16220 items sold</span>
+                                    </div>
+                                </div>
+                                <!-- END CHART-->
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <!-- TOP CAMPAIGN-->
+
+                                <div class="au-card au-card--bg-blue au-card-top-countries m-b-30">
+                                    <h3 style="color:white" class="title-3 m-b-30">Top</h3>
+
+                                    <div class="au-card-inner">
+                                        <div class="table-responsive">
+                                            <table class="table table-top-countries">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>United States</td>
+                                                        <td class="text-right">$119,366.96</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Australia</td>
+                                                        <td class="text-right">$70,261.65</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>United Kingdom</td>
+                                                        <td class="text-right">$46,399.22</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Turkey</td>
+                                                        <td class="text-right">$35,364.90</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Germany</td>
+                                                        <td class="text-right">$20,366.96</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>France</td>
+                                                        <td class="text-right">$10,366.96</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Australia</td>
+                                                        <td class="text-right">$5,366.96</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- END TOP CAMPAIGN-->
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <!-- CHART PERCENT-->
+                                <div class="chart-percent-2">
+                                    <h3 class="title-3 m-b-30">chart by %</h3>
+                                    <div class="chart-wrap">
+                                        <canvas id="percent-chart2"></canvas>
+                                        <div id="chartjs-tooltip">
+                                            <table></table>
+                                        </div>
+                                    </div>
+                                    <div class="chart-info">
+                                        <div class="chart-note">
+                                            <span class="dot dot--blue"></span>
+                                            <span>products</span>
+                                        </div>
+                                        <div class="chart-note">
+                                            <span class="dot dot--red"></span>
+                                            <span>Services</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- END CHART PERCENT-->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- END STATISTIC CHART-->
+
+                <!-- DATA TABLE-->
+                <section class="p-t-20">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3 class="title-5 m-b-35">data table</h3>
+                                <div class="table-data__tool">
+                                    <div class="table-data__tool-left">
+                                        <div class="rs-select2--light rs-select2--md">
+                                            <select class="js-select2" name="property">
+                                                <option selected="selected">All Properties</option>
+                                                <option value="">Option 1</option>
+                                                <option value="">Option 2</option>
+                                            </select>
+                                            <div class="dropDownSelect2"></div>
+                                        </div>
+                                        <div class="rs-select2--light rs-select2--sm">
+                                            <select class="js-select2" name="time">
+                                                <option selected="selected">Today</option>
+                                                <option value="">3 Days</option>
+                                                <option value="">1 Week</option>
+                                            </select>
+                                            <div class="dropDownSelect2"></div>
+                                        </div>
+                                        <button class="au-btn-filter">
+                                            <i class="zmdi zmdi-filter-list"></i>filters</button>
+                                    </div>
+                                    <div class="table-data__tool-right">
+                                        <button type="button" class="au-btn au-btn-icon au-btn--green au-btn--small"
+                                            data-toggle="modal" data-target="#largeModalAdd" title="Edit">
+                                            <i class="zmdi zmdi-plus"></i>add item</button>
+
+                                        </button>
+                                        <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
+                                            <select class="js-select2" name="type">
+                                                <option selected="selected">Export</option>
+                                                <option value="">Option 1</option>
+                                                <option value="">Option 2</option>
+                                            </select>
+                                            <div class="dropDownSelect2"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="table-responsive table-responsive-data2">
+                                    <table id="exportTable" class="table table-data2">
+                                        <thead>
+                                            <tr>
+                                                <th>name</th>
+                                                <th></th>
+                                                <th style="
+                                                    padding: 15px;
+                                                ">quantity</th>
+                                                <th>price</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="tr-shadow">
+                                                <td style="margin: 0; padding: 25px 0px 25px 25px;">
+                                                    <img style="width: 62px;
+                                                height: 62px;
+                                                margin: 5px;
+                                                border: 1px solid #3A3A3A;
+                                                background-color: #333333;
+                                                border-color: #D2D2D2;"
+                                                        src="https://community.cloudflare.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXU5A1PIYQNqhpOSV-fRPasw8rsUFJ5KBFZv668FFQxnaecIT8Wv9rilYTYkfTyNuiFwmhUvpZz3-2Z9oqg0Vew80NvZzuiJdeLMlhpwFO-XdA/62fx62f"
+                                                        alt="">
+                                                </td>
+                                                <td style="margin: 0; padding: 0;">
+                                                    <p style="font-weight: bold;color: #4272d7;">Recoil Case</p>
+                                                    <span class="block-email">Counter-Strike: Global
+                                                        Offensive</span>
+                                                </td>
+                                                <td>1</td>
+                                                <td style="font-weight: bold;color: red;">$679.00</td>
+                                                <td>
+                                                    <div class="table-data-feature">
+                                                        <button type="button" class="item" data-toggle="modal"
+                                                            data-target="#largeModal" title="Edit">
+                                                            <i class="zmdi zmdi-edit"></i>
+                                                        </button>
+                                                        <button type="button" class="item" data-toggle="modal"
+                                                            data-placement="top" data-target="#staticModal"
+                                                            title="Delete">
+                                                            <i class="zmdi zmdi-delete"></i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class="spacer"></tr>
+                                            <tr class="tr-shadow">
+                                                <td style="margin: 0; padding: 25px 0px 25px 25px;">
+                                                    <img style="width: 62px;
+                                                height: 62px;
+                                                margin: 5px;
+                                                border: 1px solid #3A3A3A;
+                                                background-color: #333333;
+                                                border-color: #D2D2D2;"
+                                                        src="https://community.cloudflare.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXU5A1PIYQNqhpOSV-fRPasw8rsUFJ5KBFZv668FFQxnaecIT8Wv9rilYTYkfTyNuiFwmhUvpZz3-2Z9oqg0Vew80NvZzuiJdeLMlhpwFO-XdA/62fx62f"
+                                                        alt="">
+                                                </td>
+                                                <td style="margin: 0; padding: 0;">
+                                                    <p style="font-weight: bold;color: #4272d7;">Recoil Case</p>
+                                                    <span class="block-email">Counter-Strike: Global
+                                                        Offensive</span>
+                                                </td>
+                                                <td>1</td>
+                                                <td style="font-weight: bold;color: red;">$679.00</td>
+                                                <td>
+                                                    <div class="table-data-feature">
+                                                        <button type="button" class="item" data-toggle="modal"
+                                                            data-target="#largeModal" title="Edit">
+                                                            <i class="zmdi zmdi-edit"></i>
+                                                        </button>
+                                                        <button type="button" class="item" data-toggle="modal"
+                                                            data-placement="top" data-target="#staticModal"
+                                                            title="Delete">
+                                                            <i class="zmdi zmdi-delete"></i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class="spacer"></tr>
+                                            <tr class="tr-shadow">
+                                                <td style="margin: 0; padding: 25px 0px 25px 25px;">
+                                                    <img style="width: 62px;
+                                                height: 62px;
+                                                margin: 5px;
+                                                border: 1px solid #3A3A3A;
+                                                background-color: #333333;
+                                                border-color: #D2D2D2;"
+                                                        src="https://community.cloudflare.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXU5A1PIYQNqhpOSV-fRPasw8rsUFJ5KBFZv668FFQxnaecIT8Wv9rilYTYkfTyNuiFwmhUvpZz3-2Z9oqg0Vew80NvZzuiJdeLMlhpwFO-XdA/62fx62f"
+                                                        alt="">
+                                                </td>
+                                                <td style="margin: 0; padding: 0;">
+                                                    <p style="font-weight: bold;color: #4272d7;">Recoil Case</p>
+                                                    <span class="block-email">Counter-Strike: Global
+                                                        Offensive</span>
+                                                </td>
+                                                <td>1</td>
+                                                <td style="font-weight: bold;color: red;">$679.00</td>
+                                                <td>
+                                                    <div class="table-data-feature">
+                                                        <button type="button" class="item" data-toggle="modal"
+                                                            data-target="#largeModal" title="Edit">
+                                                            <i class="zmdi zmdi-edit"></i>
+                                                        </button>
+                                                        <button type="button" class="item" data-toggle="modal"
+                                                            data-placement="top" data-target="#staticModal"
+                                                            title="Delete">
+                                                            <i class="zmdi zmdi-delete"></i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class="spacer"></tr>
+                                            <tr class="tr-shadow">
+                                                <td style="margin: 0; padding: 25px 0px 25px 25px;">
+                                                    <img style="width: 62px;
+                                                height: 62px;
+                                                margin: 5px;
+                                                border: 1px solid #3A3A3A;
+                                                background-color: #333333;
+                                                border-color: #D2D2D2;"
+                                                        src="https://community.cloudflare.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXU5A1PIYQNqhpOSV-fRPasw8rsUFJ5KBFZv668FFQxnaecIT8Wv9rilYTYkfTyNuiFwmhUvpZz3-2Z9oqg0Vew80NvZzuiJdeLMlhpwFO-XdA/62fx62f"
+                                                        alt="">
+                                                </td>
+                                                <td style="margin: 0; padding: 0;">
+                                                    <p style="font-weight: bold;color: #4272d7;">Recoil Case</p>
+                                                    <span class="block-email">Counter-Strike: Global
+                                                        Offensive</span>
+                                                </td>
+                                                <td>1</td>
+                                                <td style="font-weight: bold;color: red;">$679.00</td>
+                                                <td>
+                                                    <div class="table-data-feature">
+                                                        <button type="button" class="item" data-toggle="modal"
+                                                            data-target="#largeModal" title="Edit">
+                                                            <i class="zmdi zmdi-edit"></i>
+                                                        </button>
+                                                        <button type="button" class="item" data-toggle="modal"
+                                                            data-placement="top" data-target="#staticModal"
+                                                            title="Delete">
+                                                            <i class="zmdi zmdi-delete"></i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- END DATA TABLE-->
+
+                <!-- COPYRIGHT-->
+                <section class="p-t-60 p-b-20">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="copyright">
+                                    <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a
+                                            href="https://colorlib.com">Colorlib</a>.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <!-- END MAIN CONTENT-->
+        <!-- END PAGE CONTAINER-->
+    </div>
+
+</div>
+
+<!-- modal large ADD-->
+<div class="modal fade" id="largeModalAdd" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="border-bottom: 0;">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!-- Product section-->
+            <section class="py-5">
+
+                <div class="container px-4 px-lg-5 my-5">
+                    <div class="row gx-4 gx-lg-5 align-items-center">
+                        <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0"
+                                src="https://icon-library.com/images/add-image-icon-png/add-image-icon-png-14.jpg"
+                                alt="..." /></div>
+                        <div class="col-md-6">
+                            <form action="#" method="post" enctype="multipart/form-data" class="form-horizontal">
+
+                                <div class="row form-group">
+                                    <div class="col-12 col-md-12">
+                                        <input type="text" id="text-input" name="text-input" placeholder="Name item"
+                                            class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-12 col-md-12">
+                                        <select name="select" id="select" class="form-control">
+                                            <option value="0">Select Game</option>
+                                            <option value="1">Option #1</option>
+                                            <option value="2">Option #2</option>
+                                            <option value="3">Option #3</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-12 col-md-12">
+                                        <input type="number" value="1" min="1" max="1000" step="1" />
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-12 col-md-12">
+                                        <textarea name="textarea-input" id="textarea-input" rows="9"
+                                            placeholder="Content..." class="form-control"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+                                    <div class="col-12 col-md-12">
+                                        <input type="file" id="file-input" name="file-input" class="form-control-file">
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <button class="au-btn au-btn--block au-btn--green m-b-20" style="margin-top: 20px;"
+                                        type="submit">Save </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+<!-- end modal large ADD -->
+
+<!-- modal large EDIT-->
+<div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="border-bottom: 0;">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!-- Product section-->
+            <section class="py-5">
+
+                <div class="container px-4 px-lg-5 my-5">
+                    <div class="row gx-4 gx-lg-5 align-items-center">
+                        <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0"
+                                src="https://community.cloudflare.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXU5A1PIYQNqhpOSV-fRPasw8rsUFJ5KBFZv668FFQxnaecIT8Wv9rilYTYkfTyNuiFwmhUvpZz3-2Z9oqg0Vew80NvZzuiJdeLMlhpwFO-XdA/360fx360f"
+                                alt="..." /></div>
+                        <div class="col-md-6">
+                            <div class="small mb-1">SKU: BST-498</div>
+                            <h1 class="display-5 fw-bolder">Recoil Case</h1>
+                            <div class="fs-5 mb-5">
+                                <span class="text-decoration-line-through"
+                                    style="font-weight: bold;color: red;">$679.00</span>
+                            </div>
+                            <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium at
+                                dolorem quidem modi. Nam sequi consequatur obcaecati excepturi alias magni,
+                                accusamus eius blanditiis delectus ipsam minima ea iste laborum vero?</p>
+                            <div class="d-flex">
+                                <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1"
+                                    style="max-width: 3rem" />
+                            </div>
+                            <button class="au-btn au-btn--block au-btn--green m-b-20" style="margin-top: 20px;"
+                                type="submit">Save </button>
+                            <div class="fs-5 mb-5"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+<!-- end modal large EDIT-->
+
+<!-- modal static -->
+<div class="modal fade" id="staticModal" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel"
+    aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticModalLabel">Static Modal</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    This is a static modal, backdrop click will not close it.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end modal static -->
+
+
+<script type="text/javascript">
+    jQuery(function ($) {
+        $("#exportButton").click(function () {
+            // parse the HTML table element having an id=exportTable
+            var dataSource = shield.DataSource.create({
+                data: "#exportTable",
+                schema: {
+                    type: "table",
+                    fields: {
+                        Name: { type: String },
+                        Age: { type: Number },
+                        Email: { type: String }
+                    }
+                }
+            });
+
+            // when parsing is done, export the data to Excel
+            dataSource.read().then(function (data) {
+                new shield.exp.OOXMLWorkbook({
+                    author: "PrepBootstrap",
+                    worksheets: [
+                        {
+                            name: "PrepBootstrap Table",
+                            rows: [
+                                {
+                                    cells: [
+                                        {
+                                            style: {
+                                                bold: true
+                                            },
+                                            type: String,
+                                            value: "Name"
+                                        },
+                                        {
+                                            style: {
+                                                bold: true
+                                            },
+                                            type: String,
+                                            value: "Age"
+                                        },
+                                        {
+                                            style: {
+                                                bold: true
+                                            },
+                                            type: String,
+                                            value: "Email"
+                                        }
+                                    ]
+                                }
+                            ].concat($.map(data, function (item) {
+                                return {
+                                    cells: [
+                                        { type: String, value: item.Name },
+                                        { type: Number, value: item.Age },
+                                        { type: String, value: item.Email }
+                                    ]
+                                };
+                            }))
+                        }
+                    ]
+                }).saveAs({
+                    fileName: "PrepBootstrapExcel"
+                });
+            });
+        });
+    });
+</script>
