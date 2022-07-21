@@ -1,5 +1,7 @@
 const userService = require('./user_service');
 
-exports.login = async (email, password) => {
+const login = async (email, password) => {
     return await userService.login(email, password);
 };
+
+module.exports = { login };

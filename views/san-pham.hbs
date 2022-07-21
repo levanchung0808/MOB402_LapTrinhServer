@@ -51,21 +51,17 @@
         <div class="menu-sidebar__content js-scrollbar1">
             <nav class="navbar-sidebar">
                 <ul class="list-unstyled navbar__list">
-                    <li class="has-sub">
-                        <a class="js-arrow" href="index.html">
+                    <li>
+                        <a href="/">
                             <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                     </li>
                     <li>
-                        <a href="chart.html">
+                        <a href="#">
                             <i class="fas fa-chart-bar"></i>Charts</a>
                     </li>
-                    <li class="active">
-                        <a href="table.html">
+                    <li class="active has-sub">
+                        <a class="js-arrow" href="table.html">
                             <i class="fas fa-table"></i>Tables</a>
-                    </li>
-                    <li>
-                        <a href="form.html">
-                            <i class="far fa-check-square"></i>Forms</a>
                     </li>
 
                 </ul>
@@ -173,12 +169,13 @@
                                                     <p style="font-weight: bold;color: #4272d7;">{{this._id}}</p>
                                                     <span class="block-email">{{this.name}}</span>
                                                 </td>
-                                                <td>1</td>
+                                                <td>{{this.quantity}}</td>
                                                 <td style="font-weight: bold;color: red;">{{this.price}}</td>
                                                 <td>
                                                     <div class="table-data-feature">
                                                         <button type="button" class="item" data-toggle="modal"
-                                                            data-target="#largeModalAdd" title="Edit">
+                                                            onclick="goEdit('{{this._id}}','{{this.name}}','{{this.price}}','{{this.quantity}}','{{this.category}}','{{this.image}}')"
+                                                            data-target="#largeModalEdit" title="Edit">
                                                             <i class="zmdi zmdi-edit"></i>
                                                         </button>
                                                         <button type="button" class="item" data-toggle="modal"
@@ -369,8 +366,8 @@
 
 </div>
 
-<!-- modal large ADD-->
-<div class="modal fade" id="largeModalAdd" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel"
+<!-- modal large editttt-->
+<div class="modal fade" id="largeModalEdit" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -384,7 +381,7 @@
 
                 <div class="container px-4 px-lg-5 my-5">
                     <div class="row gx-4 gx-lg-5 align-items-center">
-                        <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0"
+                        <div class="col-md-6"><img id="imgProduct" class="card-img-top mb-5 mb-md-0"
                                 src="https://icon-library.com/images/add-image-icon-png/add-image-icon-png-14.jpg"
                                 alt="..." /></div>
                         <div class="col-md-6">
@@ -392,23 +389,22 @@
 
                                 <div class="row form-group">
                                     <div class="col-12 col-md-12">
-                                        <input type="text" id="text-input" name="text-input" placeholder="Name item"
+                                        <input type="text" id="txtName" name="text-input" placeholder="Name item"
                                             class="form-control">
                                     </div>
                                 </div>
                                 <div class="row form-group">
                                     <div class="col-12 col-md-12">
-                                        <select name="select" id="select" class="form-control">
-                                            <option value="0">Select Game</option>
-                                            <option value="1">Option #1</option>
-                                            <option value="2">Option #2</option>
-                                            <option value="3">Option #3</option>
+                                        <select name="select" id="slCategory" class="form-control">
+                                            {{#each categories}}
+                                                <option value="{{this.id}}">{{this.name}}</option>
+                                            {{/each}}
                                         </select>
                                     </div>
                                 </div>
                                 <div class="row form-group">
                                     <div class="col-12 col-md-12">
-                                        <input type="number" value="1" min="1" max="1000" step="1" />
+                                        <input id="txtQuantity"type="number" value="1" min="1" max="1000" step="1" />
                                     </div>
                                 </div>
                                 <div class="row form-group">
@@ -505,3 +501,26 @@
     </div>
 </div>
 <!-- end modal static -->
+
+<script>
+
+
+/*
+    let  _categories = {{{categories}}};
+    console.log(_categories)
+    */
+    
+    const _name = document.getElementById('txtName');
+    const _image = document.getElementById('imgProduct');
+    const _quantity = document.getElementById('txtQuantity');
+
+
+    const goEdit = (_id, name, price, quantity, category, image) => {
+        const sl = document.getElementById('slCategory');
+        _name.value = name;
+        _image.src = image;
+        _quantity.value = price;
+
+
+    }
+</script>

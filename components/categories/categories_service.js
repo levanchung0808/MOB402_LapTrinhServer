@@ -6,52 +6,52 @@ module.exports = { get };
 
 var categories = [
   {
-    id: 26,
+    id: 1,
     name: "Konklux",
     description: "Domainer",
   },
   {
-    id: 75,
+    id: 2,
     name: "Konklab",
     description: "Sonsing",
   },
   {
-    id: 87,
+    id: 3,
     name: "Tin",
     description: "Konklab",
   },
   {
-    id: 20,
+    id: 4,
     name: "Zathin",
     description: "Subin",
   },
   {
-    id: 96,
+    id: 5,
     name: "Lotlux",
     description: "Redhold",
   },
   {
-    id: 23,
+    id: 6,
     name: "Zamit",
     description: "Temp",
   },
   {
-    id: 87,
+    id: 7,
     name: "Subin",
     description: "Tempsoft",
   },
   {
-    id: 19,
+    id: 8,
     name: "Fix San",
     description: "Home Ing",
   },
   {
-    id: 16,
+    id: 9,
     name: "Y-find",
     description: "Flexidy",
   },
   {
-    id: 14,
+    id: 10,
     name: "Sonsing",
     description: "Asoka",
   },
