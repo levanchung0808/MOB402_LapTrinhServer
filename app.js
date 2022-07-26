@@ -6,6 +6,20 @@ var logger = require("morgan");
 
 const session = require("express-session");
 const mongoose = require("mongoose");
+require("./components/users/user_model");
+require("./components/categories/categories_model");
+require("./components/products/product_model");
+
+mongoose
+  .connect(
+    "mongodb+srv://levanchung:Aa123456@cluster0.huyh4zm.mongodb.net/Game2D?retryWrites=true&w=majority",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  )
+  .then(() => console.log(">>>>>>>>>> DB Connected!!!!!!"))
+  .catch((err) => console.log(">>>>>>>>> DB Error: ", err));
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");

@@ -1,15 +1,47 @@
+const productModel = require("./product_model");
+
 const get = async (page, size) => {
   //select id,name from products
-  const items = products.slice((page - 1) * size, page * size);
+  // const items = products.slice((page - 1) * size, page * size);
+  const items = await productModel
+    .find({})
+    .skip((page - 1) * size)
+    .limit(size);
+    console.log(items)
   return items;
 };
 
 const getById = async (id) => {
-  const product = products.find((product) => product._id == id);
+  const product = products.find((product) => product._id.toString() == id);
   return product;
 };
 
-module.exports = { get, getById };
+const insert = async (product) => {
+  const p = {
+    name: product.name,
+    price: product.price,
+    quantity: product.quantity,
+    image: product.image,
+    category: product.category,
+  };
+  products.push(p);
+};
+
+const update = async (id, product) => {
+  const p = products.find((p) => p._id.toString() == id);
+  p.name = product.name;
+  p.price = product.price;
+  p.quantity = product.quantity;
+  p.image = product.image ? product.image : p.image;
+  p.category = product.category;
+};
+
+const remove = async (id) => {
+  products = products.filter((p) => p._id.toString() != id.toString());
+  return products;
+};
+
+module.exports = { get, getById, insert, update, remove };
 
 var products = [
   {

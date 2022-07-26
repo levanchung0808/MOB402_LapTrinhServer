@@ -20,4 +20,16 @@ const getById = async (id) => {
   return { product, categories };
 };
 
-module.exports = { get, getById };
+const insert = async(product) => {
+  await productService.insert(product);
+}
+
+const update = async(id, product) => {
+  await productService.update(id, product);
+}
+
+const remove = async(id) => {
+  await productService.remove(id);
+}
+
+module.exports = { get, getById, insert, update, remove };
