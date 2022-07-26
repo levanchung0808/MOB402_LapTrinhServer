@@ -6,6 +6,9 @@ var logger = require("morgan");
 
 const session = require("express-session");
 const mongoose = require("mongoose");
+require("./components/levels/level.model");
+require("./components/boosters/booster_model");
+require("./components/characters/character.model");
 require("./components/users/user_model");
 require("./components/categories/categories_model");
 require("./components/products/product_model");
@@ -18,8 +21,8 @@ mongoose
       useUnifiedTopology: true,
     }
   )
-  .then(() => console.log(">>>>>>>>>> DB Connected!!!!!!"))
-  .catch((err) => console.log(">>>>>>>>> DB Error: ", err));
+  .then(() => console.log("►►►►► Database Connected ◄◄◄◄◄"))
+  .catch((err) => console.log("►►►►► Database Error: ◄◄◄◄◄", err));
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");

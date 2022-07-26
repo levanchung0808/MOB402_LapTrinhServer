@@ -15,6 +15,7 @@ router.get("/", async function (req, res, next) {
   } else {
     const { page, size } = req.query;
     const products = await productController.get(page, size);
+    const users = await user
     const categories = await categoriesController.get();
     res.render("san-pham", {
       products,

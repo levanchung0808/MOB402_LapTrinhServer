@@ -4,7 +4,7 @@ const get = async (page, size) => {
   //select id,name from products
   // const items = products.slice((page - 1) * size, page * size);
   const items = await productModel
-    .find({})
+    .find()
     .skip((page - 1) * size)
     .limit(size);
     console.log(items)
