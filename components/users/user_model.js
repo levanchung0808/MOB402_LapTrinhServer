@@ -3,21 +3,22 @@ const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
 
 const userSchema = new Schema({
-  _id: {
-    type: Schema.Types.ObjectId,
-    // required: false,
-    // ref: "department",
-    // default: null,
-  },
-  coin: { type: Number },
+  // _id: {
+  //   type: Schema.Types.ObjectId,
+  //   // required: false,
+  //   // ref: "department",
+  //   // default: null,
+  // },
+  coin: { type: Number, default: 0 },
   fullname: { type: String },
   image: { type: String },
   levels: { type: Schema.Types.ObjectId, ref: 'level', default: null,},
   password: { type: String },
-  score: { type: Number },
+  score: { type: Number, default: 0 },
   username: { type: String },
   booster_id: { type: Schema.Types.ObjectId, ref: "booster", default: null,}, // FK
   character_id: { type: Schema.Types.ObjectId, ref: "character", default: null, }, // FK
+  isAdmin: {type: Boolean, default: false},
 });
 
 module.exports = mongoose.model("user", userSchema);

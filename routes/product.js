@@ -3,6 +3,7 @@ var router = express.Router();
 
 const productController = require("../components/products/product_controller");
 const categoriesController = require("../components/categories/categories_controller");
+const userController = require("../components/users/user_controller");
 const middleware = require("../middleware/upload");
 
 // * 3. sản phẩm
@@ -15,9 +16,10 @@ router.get("/", async function (req, res, next) {
   } else {
     const { page, size } = req.query;
     const products = await productController.get(page, size);
-    const users = await user
+    const users = await userController.get(page, size);
     const categories = await categoriesController.get();
     res.render("san-pham", {
+      users,
       products,
       categories,
       _categories: JSON.stringify(categories),
@@ -41,7 +43,7 @@ router.get("/chi-tiet/:id", async function (req, res, next) {
 // * put: cập nhật thông tin sản phẩm
 router.get("/them-moi", async function (req, res, next) {
   const categories = await categoriesController.get();
-  res.render("san-pham", { categories });
+  res.render("them-moi", { categories });
 });
 
 //thêm mới sản phẩm
@@ -85,15 +87,15 @@ router.post(
 router.post("/xoa/:id", [], async function (req, res, next) {
   let { id } = req.params;
   await productController.remove(id);
-  res.json({success: true});
+  res.json({ success: true });
 });
 
 // * 7. thống kê
 // * http://localhost:3000/san-pham/thong-ke
 // * get: lấy thống kê sản phẩm, vẽ biểu đồ
-// router.get("/thong-ke", function (req, res, next) {
-//   const categories = await categoriesController.get();
-//   res.render("thong-ke",{categories});
-// });
+router.get("/thong-ke",[] ,async function (req, res, next) {
+  const categories = await categoriesController.get();
+  res.render("thong-ke",{categories});
+});
 
 module.exports = router;

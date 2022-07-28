@@ -227,62 +227,42 @@
                                     <table class="table">
                                         <thead>
                                             <tr>
-                                                <td>name</td>
-                                                <td>role</td>
-                                                <td>type</td>
+                                                <td>Fullname</td>
+                                                <td>Coin</td>
+                                                <td>Role</td>
+                                                <td>Score</td>
                                                 <td></td>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            {{#each users}}
                                             <tr>
-                                                <td>
-                                                    <div class="table-data__info">
-                                                        <h6>lori lynch</h6>
-                                                        <span>
-                                                            <a href="#">johndoe@gmail.com</a>
+                                                <td style="vertical-align: middle">
+                                                    <div style="width: 40%; display: inline-block; ">
+                                                        <img style="width: 100px;
+                                                height: 100px;
+                                                border-color: #D2D2D2;" src="{{this.image}}" alt="">
+                                                    </div>
+
+                                                    <div style="width: 40%; display: inline-block;">
+                                                        <h6>{{this.fullname}}</h6>
+                                                        <a href="#">{{this.username}}</a>
                                                         </span>
                                                     </div>
                                                 </td>
                                                 <td>
+                                                    <span>{{this.coin}}</span>
+                                                </td>
+                                                <td>
+                                                    {{#if this.isAdmin}}
                                                     <span class="role admin">admin</span>
-                                                </td>
-                                                <td>
-                                                    <div class="rs-select2--trans rs-select2--sm">
-                                                        <select class="js-select2" name="property">
-                                                            <option selected="selected">Full Control</option>
-                                                            <option value="">Post</option>
-                                                            <option value="">Watch</option>
-                                                        </select>
-                                                        <div class="dropDownSelect2"></div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <span class="more">
-                                                        <i class="zmdi zmdi-more"></i>
-                                                    </span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="table-data__info">
-                                                        <h6>lori lynch</h6>
-                                                        <span>
-                                                            <a href="#">johndoe@gmail.com</a>
-                                                        </span>
-                                                    </div>
-                                                </td>
-                                                <td>
+                                                    {{else}}
                                                     <span class="role user">user</span>
+                                                    {{/if}}
+
                                                 </td>
                                                 <td>
-                                                    <div class="rs-select2--trans rs-select2--sm">
-                                                        <select class="js-select2" name="property">
-                                                            <option value="">Full Control</option>
-                                                            <option value="" selected="selected">Post</option>
-                                                            <option value="">Watch</option>
-                                                        </select>
-                                                        <div class="dropDownSelect2"></div>
-                                                    </div>
+                                                    <span>{{this.score}}</span>
                                                 </td>
                                                 <td>
                                                     <span class="more">
@@ -290,35 +270,8 @@
                                                     </span>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="table-data__info">
-                                                        <h6>lori lynch</h6>
-                                                        <span>
-                                                            <a href="#">johndoe@gmail.com</a>
-                                                        </span>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <span class="role user">user</span>
-                                                </td>
-                                                <td>
-                                                    <div class="rs-select2--trans rs-select2--sm">
-                                                        <select class="js-select2" name="property">
-                                                            <option value="">Full Control</option>
-                                                            <option value="" selected="selected">Post</option>
-                                                            <option value="">Watch</option>
-                                                        </select>
-                                                        <div class="dropDownSelect2"></div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <span class="more">
-                                                        <i class="zmdi zmdi-more"></i>
-                                                    </span>
-                                                </td>
-                                            </tr>
-                                            <tr>
+                                            {{/each}}
+                                            {{!-- <tr>
                                                 <td>
                                                     <div class="table-data__info">
                                                         <h6>lori lynch</h6>
@@ -345,7 +298,7 @@
                                                         <i class="zmdi zmdi-more"></i>
                                                     </span>
                                                 </td>
-                                            </tr>
+                                            </tr> --}}
                                         </tbody>
                                     </table>
                                 </div>
@@ -458,7 +411,8 @@
                                 src="https://icon-library.com/images/add-image-icon-png/add-image-icon-png-14.jpg"
                                 alt="..." /></div>
                         <div class="col-md-6">
-                            <form action="/san-pham/them-moi" method="post" enctype="multipart/form-data" class="form-horizontal">
+                            <form action="/san-pham/them-moi" method="post" enctype="multipart/form-data"
+                                class="form-horizontal">
 
                                 <div class="row form-group">
                                     <div class="col-12 col-md-12">
@@ -490,7 +444,8 @@
 
                                 <div class="row form-group">
                                     <div class="col-12 col-md-12">
-                                        <input type="file" id="image-file" name="image" class="form-control-file" onchange="onChangeFile()">
+                                        <input type="file" id="image-file" name="image" class="form-control-file"
+                                            onchange="onChangeFile()">
                                     </div>
                                 </div>
                                 <div class="row form-group">

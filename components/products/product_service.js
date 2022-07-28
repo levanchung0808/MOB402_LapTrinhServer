@@ -7,38 +7,49 @@ const get = async (page, size) => {
     .find()
     .skip((page - 1) * size)
     .limit(size);
-    console.log(items)
+  console.log(items);
   return items;
 };
 
 const getById = async (id) => {
-  const product = products.find((product) => product._id.toString() == id);
-  return product;
+  // const product = products.find((product) => product._id.toString() == id);
+  // return product;
+  return await productModel.findById(id);
 };
 
 const insert = async (product) => {
-  const p = {
-    name: product.name,
-    price: product.price,
-    quantity: product.quantity,
-    image: product.image,
-    category: product.category,
-  };
-  products.push(p);
+  // const p = {
+  //   name: product.name,
+  //   price: product.price,
+  //   quantity: product.quantity,
+  //   image: product.image,
+  //   category: product.category,
+  // };
+  // products.push(p);
+
+  const p = productModel(p);
+  await p.save();
 };
 
 const update = async (id, product) => {
-  const p = products.find((p) => p._id.toString() == id);
-  p.name = product.name;
-  p.price = product.price;
-  p.quantity = product.quantity;
-  p.image = product.image ? product.image : p.image;
-  p.category = product.category;
+  // const p = products.find((p) => p._id.toString() == id);
+  // p.name = product.name;
+  // p.price = product.price;
+  // p.quantity = product.quantity;
+  // p.image = product.image ? product.image : p.image;
+  // p.category = product.category;
+
+  if(!product.image) {
+    delete product.image;
+  }
+
+  await productModel.findByIdAndUpdate(id, product);
 };
 
 const remove = async (id) => {
-  products = products.filter((p) => p._id.toString() != id.toString());
-  return products;
+  // products = products.filter((p) => p._id.toString() != id.toString());
+  // return products;
+  await productModel.findByIdAndDelete(id);
 };
 
 module.exports = { get, getById, insert, update, remove };
