@@ -7,7 +7,6 @@ const get = async (page, size) => {
     .find()
     .skip((page - 1) * size)
     .limit(size);
-  console.log(items);
   return items;
 };
 
@@ -27,7 +26,7 @@ const insert = async (product) => {
   // };
   // products.push(p);
 
-  const p = productModel(p);
+  const p = productModel(product);
   await p.save();
 };
 

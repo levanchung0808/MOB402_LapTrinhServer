@@ -2,14 +2,16 @@ const jwt = require("jsonwebtoken");
 
 exports.checkToken = function (request, response, next) {
   let token = null;
-  if (request.headers.authorization &&
-    request.headers.authorization.split(" ")[0] === "Bearer") {
+  if (
+    request.headers.authorization &&
+    request.headers.authorization.split(" ")[0] == "Bearer"
+  ) {
     token = request.headers.authorization.split(" ")[1];
   }
 
   if (token) {
-    jwt.verify(token, "secret", function (err, decoded) {
-      if (err) {
+    jwt.verify(token, "secret", function (error, decoded) {
+      if (error) {
         response.json({ status: false });
       } else {
         request.user = decoded;

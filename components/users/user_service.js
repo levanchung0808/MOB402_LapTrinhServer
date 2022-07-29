@@ -1,11 +1,10 @@
 const userModel = require("../users/user_model");
 
-const login = async (email, password) => {
-  let user = users.filter((item) => item.email == email);
+const login = async (username, password) => {
+  // let user = users.find((item) => item.email == email);
+  let user = await userModel.find({ username });
   if (user.length > 0) {
-    if (user[0].password == password) {
-      return user[0];
-    }
+    return user[0];
   }
   return null;
 };
@@ -20,12 +19,24 @@ const get = async (page, size) => {
   return items;
 };
 
-const getById = async (id) => {
-  const product = products.find((product) => product._id.toString() == id);
-  return product;
+const insert = async (user) => {
+  const _user = new userModel(user);
+  await _user.save();
 };
 
-//APP
+const update = async (id, user) => {
+  if (!user.image) {
+    delete user.image;
+  }
+
+  await userModel.findByIdAndUpdate(id, user);
+};
+
+const remove = async (id) => {
+  await userModel.findByIdAndDelete(id);
+};
+
+//API
 const signIn = async (username, password) => {
   try {
     let user = await userModel.find({ username });
@@ -38,8 +49,8 @@ const signIn = async (username, password) => {
   }
 };
 
-const signUp = async (username, password) => {
-  const user = new userModel({username, password});
+const signUp = async (username, password, fullname, image) => {
+  const user = new userModel({ username, password, fullname, image });
   return await user.save();
 };
 
@@ -53,14 +64,19 @@ const checkUsername = async (username) => {
   }
 };
 
-const getInfo = async (id) =>{
+const getInfo = async (id) => {
   const user = await userModel.findById(id);
   return user;
-}
+};
 
-var users = [
-  { _id: 1, email: "admin@gmail.com", password: "admin" },
-  { _id: 2, email: "user@gmail.com", password: "user" },
-];
-
-module.exports = { login, get, signIn, signUp, checkUsername, getInfo };
+module.exports = {
+  login,
+  get,
+  insert,
+  update,
+  remove,
+  signIn,
+  signUp,
+  checkUsername,
+  getInfo,
+};

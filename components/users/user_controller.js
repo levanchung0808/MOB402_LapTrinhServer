@@ -12,42 +12,54 @@ const get = async (page, size) => {
   return await userService.get(page, size);
 };
 
-const signUp = async (username, password) => {
+const insert = async (user) => {
+  await userService.insert(user);
+};
+
+const update = async (id, user) => {
+  await userService.update(id, user);
+};
+
+const remove = async (id) => {
+  await userService.remove(id);
+};
+
+const signUp = async (username, password, fullname, image) => {
   try {
     const check = await userService.checkUsername(username);
     if (check) {
-      throw new Error("Tài khoản đã tồn tại");
-      return;
+      throw new Error("Account already exists");
     }
     //mã hoá password trc khi signIn
     const hasPassword = await bcrypt.hashSync(password, 10);
-    return await userService.signUp(username, hasPassword);
+    return await userService.signUp(username, hasPassword, fullname, image);
   } catch (error) {
-    throw new Error(error.message || "Có lỗi rồi");
+    throw new Error(error.message || "Error");
   }
 };
 
-const signIn = async (email, password) => {
+const signIn = async (username, password) => {
   try {
-    const user = await userService.signIn(email);
+    const user = await userService.signIn(username);
     if (user) {
       const check = await bcrypt.compareSync(password, user.password);
       if (check) {
         //tạo token với username là id của user
         const token = jwt.sign(
-          { username: user.username, id: user._id },
+          { username: user.username, _id: user._id, isAdmin: user.isAdmin },
           "secret",
-          { expiresIn: 1 * 60 }
+          { expiresIn: 30 * 24 * 60 * 60 }
         );
+        //tạo refresh token 90 days
         return token;
       } else {
-        throw new Error("Đăng nhập không thành công");
+        throw new Error("Login failed");
       }
     } else {
-      throw new Error("Đăng nhập không thành công");
+      throw new Error("Login failed");
     }
   } catch (error) {
-    throw new Error(error.message || "Có lỗi rồi");
+    throw new Error(error.message || "Error");
   }
 };
 
@@ -55,8 +67,18 @@ const getInfo = async (id) => {
   try {
     return await userService.getInfo(id);
   } catch (error) {
-    throw new Error(error.message || "Có lỗi rồi");
+    console.log(error);
+    throw new Error(error.message || "Error");
   }
 };
 
-module.exports = { login, get, signUp, signIn, getInfo };
+module.exports = {
+  login,
+  get,
+  insert,
+  update,
+  remove,
+  signUp,
+  signIn,
+  getInfo,
+};

@@ -6,6 +6,10 @@ var logger = require("morgan");
 
 const session = require("express-session");
 const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+const cors = require("cors");
+dotenv.config();
+
 require("./components/levels/level.model");
 require("./components/boosters/booster_model");
 require("./components/characters/character.model");
@@ -14,13 +18,10 @@ require("./components/categories/categories_model");
 require("./components/products/product_model");
 
 mongoose
-  .connect(
-    "mongodb+srv://levanchung:Aa123456@cluster0.huyh4zm.mongodb.net/Game2D?retryWrites=true&w=majority",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  )
+  .connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => console.log("►►►►► Database Connected ◄◄◄◄◄"))
   .catch((err) => console.log("►►►►► Database Error: ◄◄◄◄◄", err));
 
@@ -30,6 +31,9 @@ var productRouter = require("./routes/product");
 var apiRouter = require("./routes/api");
 
 var app = express();
+// Middleware
+app.use(express.json());
+app.use(cors());
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -51,7 +55,7 @@ app.use(
 );
 
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
+app.use("/nguoi-dung", usersRouter);
 app.use("/san-pham", productRouter);
 app.use("/api", apiRouter);
 
