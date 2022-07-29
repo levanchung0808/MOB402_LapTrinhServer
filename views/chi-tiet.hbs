@@ -1,0 +1,88 @@
+<div class="d-flex justify-content-center">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                <strong>Update users</strong>
+            </div>
+            <div class="col-md-6 offset-md-3">
+                <img style="width: 500px; height: 500px; text-align: center" id="image-view" name='image-view'
+                    class="card-img-top mb-5 mb-md-0"
+                    src="{{user.image}}" alt="..." />
+            </div>
+            <div class="card-body card-block">
+                <form action="/nguoi-dung/them-moi" method="post" enctype="multipart/form-data" class="form-horizontal">
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="text-input" class=" form-control-label">Full name</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input type="text" id="fullname" name="fullname" value="{{user.fullname}}" placeholder="Text" class="form-control">
+                            <small class="form-text text-muted">This is a help text</small>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="email-input" class=" form-control-label">Username</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input type="email" id="username" name="username" value="{{user.username}}" disabled="" placeholder="Enter Username"
+                                class="form-control">
+                            <small class="help-block form-text">Please enter your username</small>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="password-input" class=" form-control-label">Password</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input type="password" id="password" name="password" value="{{user.password}}" placeholder="Enter Password"
+                                class="form-control">
+                            <small class="help-block form-text">Please enter a complex password</small>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="file-input" class=" form-control-label">File input</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input type="file" id="image-file" name="image" class="form-control-file"
+                                onchange="onChangeFile()">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-lg btn-block">Save</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    //let _categories = {{{ _categories }}};
+
+    const _fullname = document.getElementById('fullname');
+    const _name = document.getElementById('username');
+    const _password = document.getElementById('password');
+    const _image = document.getElementById('image');
+
+
+    const goEdit = (_id, name, price, quantity, category, image) => {
+        const sl = document.getElementById('slCategory');
+        _name.value = name;
+        _image.src = image;
+        _quantity.value = price;
+
+        console.log(_categories);
+    }
+
+    //upload hình lên sv và nhận lại url
+    const onChangeFile = () => {
+        const file = document.getElementById('image-file').files[0];
+        const reader = new FileReader();
+        reader.onload = e => {
+            document.getElementById('image-view').src = e.target.result;
+        }
+        reader.readAsDataURL(file);
+    }
+
+</script>

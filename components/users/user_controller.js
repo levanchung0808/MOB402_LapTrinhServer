@@ -12,8 +12,14 @@ const get = async (page, size) => {
   return await userService.get(page, size);
 };
 
+const getById = async (id) => {
+  return await userService.getInfo(id);
+};
+
 const insert = async (user) => {
-  await userService.insert(user);
+  //mã hoá password trc khi signIn
+  user.password = await bcrypt.hashSync(user.password, 10);
+  return await userService.insert(user);
 };
 
 const update = async (id, user) => {
@@ -78,6 +84,7 @@ module.exports = {
   insert,
   update,
   remove,
+  getById,
   signUp,
   signIn,
   getInfo,

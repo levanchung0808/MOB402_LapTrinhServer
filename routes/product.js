@@ -6,15 +6,6 @@ const categoriesController = require("../components/categories/categories_contro
 const userController = require("../components/users/user_controller");
 const middleware = require("../middleware/upload");
 
-// * 6. xóa sản phẩm
-// * http://localhost:3000/san-pham/
-// * delete: xóa 1 sản phẩm
-
-router.post("/xoa/:id", [], async function (req, res, next) {
-  let { id } = req.params;
-  await productController.remove(id);
-  res.json({ success: true });
-});
 
 // * 7. thống kê
 // * http://localhost:3000/san-pham/thong-ke

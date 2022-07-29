@@ -19,6 +19,12 @@ const get = async (page, size) => {
   return items;
 };
 
+const getById = async (id) => {
+  const user = await userModel.findById(id);
+  if (user) return user;
+  return null;
+};
+
 const insert = async (user) => {
   const _user = new userModel(user);
   await _user.save();
@@ -75,6 +81,7 @@ module.exports = {
   insert,
   update,
   remove,
+  getById,
   signIn,
   signUp,
   checkUsername,
