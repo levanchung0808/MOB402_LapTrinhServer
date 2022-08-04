@@ -16,8 +16,12 @@
                             <label for="text-input" class=" form-control-label">Full name</label>
                         </div>
                         <div class="col-12 col-md-9">
-                            <input type="text" id="fullname" name="fullname" placeholder="Text" class="form-control">
-                            <small class="form-text text-muted">This is a help text</small>
+                            <input type="text" id="fullname" name="fullname"
+                                onchange="checkString(this.value, 'fullname')" placeholder="Enter Fullname..."
+                                class="form-control">
+                            <small style="display: none; color: red; font-weight: bold" id="lbfullname"
+                                class="form-text">Fullname is
+                                required</small>
                         </div>
                     </div>
                     <div class="row form-group">
@@ -25,9 +29,11 @@
                             <label for="email-input" class=" form-control-label">Username</label>
                         </div>
                         <div class="col-12 col-md-9">
-                            <input type="email" id="username" name="username" placeholder="Enter Username"
+                            <input type="email" id="username" name="username"
+                                onchange="checkString(this.value, 'username')" placeholder="Enter Username..."
                                 class="form-control">
-                            <small class="help-block form-text">Please enter your username</small>
+                            <small style="display: none" id="lbusername" class="help-block form-text">Username is
+                                required</small>
                         </div>
                     </div>
                     <div class="row form-group">
@@ -35,9 +41,11 @@
                             <label for="password-input" class=" form-control-label">Password</label>
                         </div>
                         <div class="col-12 col-md-9">
-                            <input type="password" id="password" name="password" placeholder="Enter Password"
+                            <input type="password" id="password" name="password"
+                                onchange="checkString(this.value, 'password')" placeholder="Enter Password..."
                                 class="form-control">
-                            <small class="help-block form-text">Please enter a complex password</small>
+                            <small style="display: none" id="lbpassword" class="help-block form-text">Password is
+                                required</small>
                         </div>
                     </div>
                     <div class="row form-group">
@@ -49,7 +57,7 @@
                                 onchange="onChangeFile()">
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-success btn-lg btn-block">Save</button>
+                    <button disabled id="btnSave" type="submit" class="btn btn-success btn-lg btn-block">Save</button>
                 </form>
             </div>
 
@@ -58,21 +66,49 @@
 </div>
 
 <script>
-    //let _categories = {{{ _categories }}};
-
     const _fullname = document.getElementById('fullname');
     const _name = document.getElementById('username');
     const _password = document.getElementById('password');
     const _image = document.getElementById('image');
 
 
-    const goEdit = (_id, name, price, quantity, category, image) => {
-        const sl = document.getElementById('slCategory');
-        _name.value = name;
-        _image.src = image;
-        _quantity.value = price;
+    const inputFullname = document.getElementById('fullname');
+    const inputUsername = document.getElementById('username');
+    const inputPassword = document.getElementById('password');
 
-        console.log(_categories);
+    const fullname = document.getElementById('lbfullname');
+    const username = document.getElementById('lbusername');
+    const password = document.getElementById('lbpassword');
+    const btnSave = document.getElementById('btnSave');
+
+    let isFormValid = false;
+
+    const checkType = {
+        fullname: { status: false, ele: fullname, input: inputFullname },
+        username: { status: false, ele: username, input: inputUsername },
+        password: { status: false, ele: password, input: inputPassword },
+    }
+
+    //validate
+    const checkString = (value, type) => {
+        if (value && value.trim().length > 0) {
+            checkType[type].status = true;
+            checkType[type].ele.style.display = "none";
+            checkType[type].input.style.borderColor = "rgb(40, 167, 69)";
+
+        } else if (!value.match(patternEmail)) {
+            checkType[type].status = true;
+            checkType[type].ele.style.display = "none";
+            checkType[type].input.style.borderColor = "rgb(40, 167, 69)";
+        }
+        else {
+            checkType[type].status = false;
+            checkType[type].ele.style.display = "";
+            checkType[type].input.style.borderColor = "rgb(220, 53, 69)";
+        }
+        isFormValid = Object.keys(checkType).every(key => checkType[key].status);
+
+        btnSave.disabled = !isFormValid;
     }
 
     //upload hình lên sv và nhận lại url
@@ -84,5 +120,7 @@
         }
         reader.readAsDataURL(file);
     }
+
+
 
 </script>

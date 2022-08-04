@@ -56,7 +56,7 @@
                             <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="/nguoi-dung/thong-ke">
                             <i class="fas fa-chart-bar"></i>Charts</a>
                     </li>
                     <li class="active has-sub">
@@ -206,7 +206,7 @@
                                     <i class="zmdi zmdi-account-calendar"></i>user data
                                 </h3>
                                 <div class="col-lg-12">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-6" style="display: inline-block;">
                                         <div class="rs-select2--dark rs-select2--md m-r-10 rs-select2--border">
                                             <select class="js-select2" name="property">
                                                 <option selected="selected">All Properties</option>
@@ -225,8 +225,9 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-sm-4">
-                                        <a href="/nguoi-dung/them-moi" class="au-btn au-btn-icon au-btn--green au-btn--small" title="Edit"> <i
+                                    <div class=".col-sm-6" style="display: inline-block;">
+                                        <a href="/nguoi-dung/them-moi"
+                                            class="au-btn au-btn-icon au-btn--green au-btn--small" title="Edit"> <i
                                                 class="zmdi zmdi-plus"></i style="color:white">add item</a>
                                     </div>
 
@@ -239,8 +240,8 @@
                                             <tr>
                                                 <td>Fullname</td>
                                                 <td>Coin</td>
-                                                <td>Role</td>
                                                 <td>Score</td>
+                                                <td>Role</td>
                                                 <td></td>
                                             </tr>
                                         </thead>
@@ -264,6 +265,9 @@
                                                     <span>{{this.coin}}</span>
                                                 </td>
                                                 <td>
+                                                    <span>{{this.score}}</span>
+                                                </td>
+                                                <td>
                                                     {{#if this.isAdmin}}
                                                     <span class="role admin">admin</span>
                                                     {{else}}
@@ -272,19 +276,18 @@
 
                                                 </td>
                                                 <td>
-                                                    <span>{{this.score}}</span>
-                                                </td>
-                                                <td>
                                                     <div class="table-data-feature">
                                                         <button class="item" data-toggle="tooltip" data-placement="top"
                                                             title="Edit">
-                                                            <a href="/san-pham/them-moi">
+                                                            <a href="/nguoi-dung/chi-tiet/{{this._id}}">
                                                                 <i class="zmdi zmdi-edit"></i>
                                                             </a>
                                                         </button>
                                                         <button class="item" data-toggle="tooltip" data-placement="top"
                                                             title="Delete">
-                                                            <i class="zmdi zmdi-delete"></i>
+                                                            <a href="#" onclick="onRemove('{{this._id}}')">
+                                                                <i class="zmdi zmdi-delete"></i>
+                                                            </a>
                                                         </button>
                                                     </div>
 
@@ -563,16 +566,6 @@
     const _image = document.getElementById('imgProduct');
     const _quantity = document.getElementById('txtQuantity');
 
-
-    const goEdit = (_id, name, price, quantity, category, image) => {
-        const sl = document.getElementById('slCategory');
-        _name.value = name;
-        _image.src = image;
-        _quantity.value = price;
-
-        console.log(_categories);
-    }
-
     //upload hình lên sv và nhận lại url
     const onChangeFile = () => {
         const file = document.getElementById('image-file').files[0];
@@ -583,4 +576,30 @@
         reader.readAsDataURL(file);
     }
 
+    const onRemove = id => {
+        swal({
+            title: "Bạn có chắc chắn?",
+            text: "Sau khi xoá, bạn sẽ không thể khôi phục người dùng này!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    const url = `/nguoi-dung/xoa/${id}`;
+                    fetch(url, {
+                        method: "POST",
+                        headers: {
+                            'Content-Type': 'application/json',
+                        }
+                    }).then(res => res.json())
+                        .then(data => {
+                            swal("Bạn đã xoá người dùng!", {
+                                icon: "success",
+                            })
+                            window.location.reload();
+                        });
+                }
+            });
+    }
 </script>

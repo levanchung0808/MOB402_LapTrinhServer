@@ -9,6 +9,8 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require("cors");
 dotenv.config();
+const bodyParser = require("body-parser");
+const passport = require("passport");
 
 require("./components/levels/level.model");
 require("./components/boosters/booster_model");
@@ -31,6 +33,23 @@ var productRouter = require("./routes/product");
 var apiRouter = require("./routes/api");
 
 var app = express();
+
+//Authentication FB
+app.set("views", __dirname + "/views");
+app.set("view engine", "ejs"); // sử dụng view ejs
+app.use(cookieParser()); //Parse cookie
+app.use(bodyParser.urlencoded({ extended: false })); //Parse body để get data
+app.use(
+  session({
+    secret: "keyboard cat",
+    key: "sid",
+    resave: false,
+    saveUninitialized: true,
+  })
+); //Save user login
+app.use(passport.initialize());
+app.use(passport.session());
+
 // Middleware
 app.use(express.json());
 app.use(cors());
@@ -58,7 +77,6 @@ app.use("/", indexRouter);
 app.use("/nguoi-dung", usersRouter);
 app.use("/san-pham", productRouter);
 app.use("/api", apiRouter);
-
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

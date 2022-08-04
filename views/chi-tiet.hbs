@@ -10,7 +10,7 @@
                     src="{{user.image}}" alt="..." />
             </div>
             <div class="card-body card-block">
-                <form action="/nguoi-dung/them-moi" method="post" enctype="multipart/form-data" class="form-horizontal">
+                <form action="/nguoi-dung/chi-tiet/{{user._id}}" method="post" enctype="multipart/form-data" class="form-horizontal">
                     <div class="row form-group">
                         <div class="col col-md-3">
                             <label for="text-input" class=" form-control-label">Full name</label>
@@ -30,7 +30,7 @@
                             <small class="help-block form-text">Please enter your username</small>
                         </div>
                     </div>
-                    <div class="row form-group">
+                    {{!-- <div class="row form-group">
                         <div class="col col-md-3">
                             <label for="password-input" class=" form-control-label">Password</label>
                         </div>
@@ -38,6 +38,22 @@
                             <input type="password" id="password" name="password" value="{{user.password}}" placeholder="Enter Password"
                                 class="form-control">
                             <small class="help-block form-text">Please enter a complex password</small>
+                        </div>
+                    </div> --}}
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="password-input" class=" form-control-label">Coin</label>
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <input type="text" id="coin" name="coin" value="{{user.coin}}" placeholder="Coin" class="form-control">
+                            <small class="form-text text-muted">This is a help text</small>
+                        </div>
+                        <div class="col col-md-3">
+                            <label for="password-input" class=" form-control-label">Score</label>
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <input type="text" id="score" name="score" value="{{user.score}}" placeholder="Score" class="form-control">
+                            <small class="form-text text-muted">This is a help text</small>
                         </div>
                     </div>
                     <div class="row form-group">

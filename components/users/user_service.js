@@ -21,7 +21,13 @@ const get = async (page, size) => {
 
 const getById = async (id) => {
   const user = await userModel.findById(id);
-  if (user) return user;
+  if (user.length > 0) return user[0];
+  return null;
+};
+
+const getByUsername = async (username) => {
+  const user = await userModel.find(username);
+  if (user.length > 0) return user[0];
   return null;
 };
 
@@ -34,7 +40,6 @@ const update = async (id, user) => {
   if (!user.image) {
     delete user.image;
   }
-
   await userModel.findByIdAndUpdate(id, user);
 };
 
@@ -82,6 +87,7 @@ module.exports = {
   update,
   remove,
   getById,
+  getByUsername,
   signIn,
   signUp,
   checkUsername,

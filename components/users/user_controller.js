@@ -2,8 +2,18 @@ const userService = require("./user_service");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-const login = async (email, password) => {
-  return await userService.login(email, password);
+const login = async (username, password) => {
+  try {
+    const user = await userService.login(username, password);
+    if (user) {
+      const check = await bcrypt.compare(password, user.password);
+      if (check) {
+        return user;
+      }
+    }
+  } catch (error) {
+    return null;
+  }
 };
 
 const get = async (page, size) => {
@@ -14,6 +24,10 @@ const get = async (page, size) => {
 
 const getById = async (id) => {
   return await userService.getInfo(id);
+};
+
+const getByUsername = async (username) => {
+  return await userService.getByUsername(username);
 };
 
 const insert = async (user) => {
@@ -56,8 +70,9 @@ const signIn = async (username, password) => {
           "secret",
           { expiresIn: 30 * 24 * 60 * 60 }
         );
-        //tạo refresh token 90 days
-        return token;
+        //tạo refresh token 90 daysy
+        const data = { user, token };
+        return data;
       } else {
         throw new Error("Login failed");
       }
@@ -85,6 +100,7 @@ module.exports = {
   update,
   remove,
   getById,
+  getByUsername,
   signUp,
   signIn,
   getInfo,
