@@ -43,7 +43,7 @@ router.get("/user-info", [authen.checkToken], async function (req, res, next) {
   }
 });
 
-router.get("/save-state", [authen.checkToken], async function (req, res, next) {
+router.post("/save-state", [authen.checkToken], async function (req, res, next) {
   try {
     const { _id } = req.user;
     const {name, posX, posY } = req.body;
