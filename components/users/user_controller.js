@@ -71,7 +71,7 @@ const signIn = async (username, password) => {
           { expiresIn: 30 * 24 * 60 * 60 }
         );
         //tạo refresh token 90 daysy
-        const data = { user, token };
+        const data = { error: false, user, token };
         return data;
       } else {
         throw new Error("Login failed");
