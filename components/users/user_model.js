@@ -3,20 +3,22 @@ const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
 
 const userSchema = new Schema({
-  // _id: {
-  //   type: Schema.Types.ObjectId,
-  //   // required: false,
-  //   // ref: "department",
-  //   // default: null,
-  // },
   coin: { type: Number, default: 0 },
   fullname: { type: String, required: true },
   image: { type: String, required: true },
-  levels: { type: Schema.Types.ObjectId, ref: "level", default: null },
+  levels: {
+    _id: {
+      type: Schema.Types.ObjectId,
+      ref: "level",
+      default: "62e9d77bc19348057fcbac59",
+    },
+    name: { type: String, default: "Level 1" },
+    posX: { type: Number, default: 0 },
+    posY: { type: Number, default: 0 },
+  },
   password: { type: String, required: true },
   score: { type: Number, default: 0 },
   username: { type: String, unique: true },
-  // booster_id: { type: Schema.Types.ObjectId, ref: "booster", default: null,}, // FK
   booster_id: [
     {
       _id: { type: Schema.Types.ObjectId, ref: "booster", default: null }, // FK
