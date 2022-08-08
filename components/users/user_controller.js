@@ -84,9 +84,36 @@ const signIn = async (username, password) => {
   }
 };
 
+const getAllUser = async () => {
+  try {
+    return await userService.getAllUser();
+  } catch (error) {
+    console.log(error);
+    throw new Error(error.message || "Error");
+  }
+};
+
 const getInfo = async (id) => {
   try {
     return await userService.getInfo(id);
+  } catch (error) {
+    console.log(error);
+    throw new Error(error.message || "Error");
+  }
+};
+
+const saveState = async (id, level) => {
+  try {
+    return await userService.saveState(id, level);
+  } catch (error) {
+    console.log(error);
+    throw new Error(error.message || "Error");
+  }
+};
+
+const saveScore = async (id, score) => {
+  try {
+    return await userService.saveScore(id, score);
   } catch (error) {
     console.log(error);
     throw new Error(error.message || "Error");
@@ -103,5 +130,8 @@ module.exports = {
   getByUsername,
   signUp,
   signIn,
+  getAllUser,
   getInfo,
+  saveState,
+  saveScore,
 };

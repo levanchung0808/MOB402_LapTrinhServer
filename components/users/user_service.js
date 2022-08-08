@@ -75,10 +75,26 @@ const checkUsername = async (username) => {
   }
 };
 
+const getAllUser = async () => {
+  return await userModel.find().sort({score: -1});
+};
+
 const getInfo = async (id) => {
   const user = await userModel.findById(id);
   return user;
 };
+
+const saveState = async (id, level) => {
+  const user = await userModel.findByIdAndUpdate(id, level);
+  return user;
+};
+
+
+const saveScore = async (id, score) => {
+  const user = await userModel.findByIdAndUpdate(id, {score: score});
+  return user;
+};
+
 
 module.exports = {
   login,
@@ -91,5 +107,8 @@ module.exports = {
   signIn,
   signUp,
   checkUsername,
+  getAllUser,
   getInfo,
+  saveState,
+  saveScore,
 };

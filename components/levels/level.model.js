@@ -5,8 +5,8 @@ const ObjectId = Schema.ObjectId;
 const levelSchema = new Schema({
   _id: { type: Schema.Types.ObjectId },
   name: { type: String },
-  posX: { type: Number },
-  posY: { type: Number },
+  posX: { type: String },
+  posY: { type: String },
 });
 
 module.exports = mongoose.model("level", levelSchema);

@@ -4,6 +4,15 @@ var router = express.Router();
 const userController = require("../components/users/user_controller");
 const authen = require("../middleware/authen");
 
+router.get("/thong-ke", async (req, res) => {
+  try {
+    const data = await userController.getAllUser();
+    res.status(200).json({ error: false, data: data });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 router.post("/sign-up", async (req, res) => {
   try {
     const { username, password, fullname, image } = req.body;
@@ -43,19 +52,36 @@ router.get("/user-info", [authen.checkToken], async function (req, res, next) {
   }
 });
 
-router.post("/save-state", [authen.checkToken], async function (req, res, next) {
-  try {
-    const { _id } = req.user;
-    const {name, posX, posY } = req.body;
-    const user = await userController.getInfo(_id);
-    user.name = name;
-    user.levels.posX = Number(posX),
-    user.levels.posY = Number(posY),
-    res.status(200).json({error: false, user});
-  } catch (error) {
-    console.log(error);
-    res.status(501).json({ error: error.message });
+router.post(
+  "/save-state",
+  [authen.checkToken],
+  async function (req, res, next) {
+    try {
+      const { _id } = req.user;
+      const level = req.body;
+      const user = await userController.saveState(_id, level);
+      res.status(200).json({ error: false, user });
+    } catch (error) {
+      console.log(error);
+      res.status(501).json({ error: error.message });
+    }
   }
-});
+);
+
+router.post(
+  "/save-score",
+  [authen.checkToken],
+  async function (req, res, next) {
+    try {
+      const { _id } = req.user;
+      const { score } = req.body;
+      const data = await userController.saveScore(_id, score);
+      res.status(200).json({ error: false, data });
+    } catch (error) {
+      console.log(error);
+      res.status(501).json({ error: error.message });
+    }
+  }
+);
 
 module.exports = router;
