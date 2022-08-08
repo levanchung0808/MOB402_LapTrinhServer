@@ -75,8 +75,8 @@ router.post(
     try {
       const { _id } = req.user;
       const { score } = req.body;
-      const data = await userController.saveScore(_id, score);
-      res.status(200).json({ error: false, data });
+      const user = await userController.saveScore(_id, score);
+      res.status(200).json({ error: false, user });
     } catch (error) {
       console.log(error);
       res.status(501).json({ error: error.message });
