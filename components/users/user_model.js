@@ -34,6 +34,10 @@ const userSchema = new Schema({
     default: null,
   }, // FK
   isAdmin: { type: Boolean, default: false },
+  //quản lý token forgot password
+  resetPasswordToken: { type: String, required: false },
+  available: { type: Boolean, required: false, default: true },
+  createAt: { type: Date, required: false, default: Date.now },
 });
 
 module.exports = mongoose.model("user", userSchema);

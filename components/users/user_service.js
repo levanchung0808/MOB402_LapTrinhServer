@@ -1,4 +1,5 @@
 const userModel = require("../users/user_model");
+const nodemailer = require("nodemailer");
 
 const login = async (username, password) => {
   // let user = users.find((item) => item.email == email);
@@ -76,7 +77,7 @@ const checkUsername = async (username) => {
 };
 
 const getAllUser = async () => {
-  return await userModel.find().sort({score: -1});
+  return await userModel.find().sort({ score: -1 });
 };
 
 const getInfo = async (id) => {
@@ -89,12 +90,44 @@ const saveState = async (id, level) => {
   return user;
 };
 
-
-const saveScore = async (id, score) => {
-  const user = await userModel.findByIdAndUpdate(id, {score: score});
-  return user;
+const saveScore = async (username, score) => {
+  const user = await userModel.find({ username });
+  console.log(username, score);
+  if (user[0]) {
+    const numbScore = Number.parseInt(score);
+    if (user[0].score < numbScore) {
+      return await userModel.findByIdAndUpdate(user[0]._id, {$set: {score: numbScore}});
+    }else{
+      return null;
+    }
+  }
 };
 
+const sendEmail = async (email) => {
+  let transporter = nodemailer.createTransport({
+    pool: true,
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true,
+    auth: {
+      user: "levanchunq123@gmail.com",
+      pass: "cspbwiavrhwxlxbw",
+    },
+  });
+
+  try {
+    const html = `<h1>Hello Nam</h1>`;
+    await transporter.sendMail({
+      from: "levanchunq123@gmail.com",
+      to: "chunglvps19319@fpt.edu.vn",
+      subject: "aloalo ok",
+      html: html,
+    });
+    return { message: "Gửi email thành công" };
+  } catch (errors) {
+    throw errors;
+  }
+};
 
 module.exports = {
   login,
@@ -111,4 +144,5 @@ module.exports = {
   getInfo,
   saveState,
   saveScore,
+  sendEmail,
 };

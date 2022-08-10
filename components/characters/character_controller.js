@@ -1,7 +1,7 @@
-const categoriesService = require("./categories_service");
+const characterService = require("./character_service");
 
 const get = async () => {
-  return await categoriesService.get();
+  return await characterService.get();
 };
 
 module.exports = { get };

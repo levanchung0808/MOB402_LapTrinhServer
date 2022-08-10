@@ -1,6 +1,6 @@
-const characterModel = require("../characters/character.model");
+const boosterModel = require("../boosters/booster_model");
 const get = async (page, size) => {
-  const items = await characterModel
+  const items = await boosterModel
     .find({})
     .skip((page - 1) * size)
     .limit(size);

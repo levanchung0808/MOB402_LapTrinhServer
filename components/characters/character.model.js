@@ -4,9 +4,10 @@ const ObjectId = Schema.ObjectId;
 
 const characterSchema = new Schema({
   _id: { type: Schema.Types.ObjectId },
+  image: { type: String },
   name: { type: String },
   price: { type: Number },
-  image: { type: String },
+  
 });
 
 module.exports = mongoose.model("character", characterSchema);

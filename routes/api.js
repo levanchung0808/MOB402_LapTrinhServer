@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 
 const userController = require("../components/users/user_controller");
+const characterController = require("../components/characters/character_controller");
 const authen = require("../middleware/authen");
 
 router.get("/thong-ke", async (req, res) => {
@@ -70,12 +71,10 @@ router.post(
 
 router.post(
   "/save-score",
-  [authen.checkToken],
   async function (req, res, next) {
     try {
-      const { _id } = req.user;
-      const { score } = req.body;
-      const user = await userController.saveScore(_id, score);
+      const { username, score } = req.body;
+      const user = await userController.saveScore(username, score);
       res.status(200).json({ error: false, user });
     } catch (error) {
       console.log(error);
@@ -83,5 +82,35 @@ router.post(
     }
   }
 );
+
+router.get("/send-email", async function (req, res, next) {
+  try {
+    const result = await userController.sendEmail('');
+    res.status(200).json(result);
+  } catch (error) {
+    console.log(error);
+    res.status(501).json({ error: error.message });
+  }
+});
+
+router.get("/get-all-characters", async function (req, res, next) {
+    try{
+      const result = await characterController.get();
+      res.status(200).json(result);
+    }catch (error) {
+      console.log(error);
+      res.status(501).json({ error: error.message });
+    }
+});
+
+router.get("/get-all-boosters", async function (req, res, next) {
+  try{
+    const result = await characterController.get();
+    res.status(200).json(result);
+  }catch (error) {
+    console.log(error);
+    res.status(501).json({ error: error.message });
+  }
+});
 
 module.exports = router;

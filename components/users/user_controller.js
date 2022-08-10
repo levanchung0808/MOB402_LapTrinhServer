@@ -111,14 +111,18 @@ const saveState = async (id, level) => {
   }
 };
 
-const saveScore = async (id, score) => {
+const saveScore = async (username, score) => {
   try {
-    return await userService.saveScore(id, score);
+    return await userService.saveScore(username, score);
   } catch (error) {
     console.log(error);
     throw new Error(error.message || "Error");
   }
 };
+
+const sendEmail = async (email) => {
+  return await userService.sendEmail(email);
+}
 
 module.exports = {
   login,
@@ -134,4 +138,5 @@ module.exports = {
   getInfo,
   saveState,
   saveScore,
+  sendEmail,
 };
